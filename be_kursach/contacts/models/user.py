@@ -1,9 +1,8 @@
-from django.db.models import Model
 from django.db.models.fields import CharField, DateField
 from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
 
-from ...temps.models import Position
+from temps.models import Position
 from django.contrib.auth.models import User
 
 
