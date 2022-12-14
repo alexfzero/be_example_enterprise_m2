@@ -1,4 +1,4 @@
-from django.db.models.fields import CharField, DateField
+from django.db.models.fields import CharField, DateField, BooleanField
 from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
 
@@ -11,3 +11,5 @@ class ExtendUser(User):
     birthday = DateField()
     Number = CharField(max_length=11)
     position = ForeignKey(Position, related_name='extend_users', on_delete=CASCADE, blank=True, null=True)
+    is_admin = BooleanField(default=False)
+    is_booker = BooleanField(default=False)
