@@ -20,5 +20,5 @@ from .superadmin import urlpatterns as superadmin_urls
 
 urlpatterns = [
     path('local/', superuser.site.urls),
-    path('superadmin/', include((superadmin_urls, 'superadmin'), namespace='superadmin')),
+    path('super/', include((superadmin_urls, 'super'), namespace='super')),
 ]
