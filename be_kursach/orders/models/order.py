@@ -19,3 +19,6 @@ class PurchaseOrder(Model):
     purchase_manager = ForeignKey(ExtendUser, related_name='manager_orders', on_delete=CASCADE)
     vat = IntegerField()
     summary = CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.order_number}"

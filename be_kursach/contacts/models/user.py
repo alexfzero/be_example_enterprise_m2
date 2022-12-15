@@ -11,12 +11,16 @@ from django.contrib.auth.models import User
 
 class ExtendUser(Model):
     user = OneToOneField(User, related_name='extended_user', on_delete=CASCADE)
+    middle_name = CharField(max_length=100, blank=True, null=True)
     sex = CharField(max_length=1)
     birthday = DateField()
     number = CharField(max_length=11)
     position = ForeignKey(Position, related_name='extend_users', on_delete=CASCADE, blank=True, null=True)
     is_admin = BooleanField(default=False)
     is_booker = BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username}"
 
     @receiver(post_save, sender=User)
     def create_user(sender, instance, created, **kwargs):

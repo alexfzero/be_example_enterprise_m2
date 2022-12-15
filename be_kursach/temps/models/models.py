@@ -7,9 +7,15 @@ from django.db.models.deletion import CASCADE
 class Status(Model):
     name = CharField(max_length=20, unique=True)
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class Department(Model):
     name = CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class Position(Model):
@@ -20,6 +26,12 @@ class Position(Model):
     class Meta:
         unique_together = ['name', 'department']
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class OperationType(Model):
     name = CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return f"{self.name}"
