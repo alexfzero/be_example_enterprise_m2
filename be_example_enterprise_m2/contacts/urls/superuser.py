@@ -6,7 +6,7 @@ from ..views.superuser import SuperUserExtendUserViewSet, SuperUserOrganizationV
 
 contacts_routers = SimpleRouter()
 contacts_routers.register(prefix='users', viewset=SuperUserExtendUserViewSet, basename='users')
-contacts_routers.register(prefix='organizations', viewset=SuperUserOrganizationViewSet, basename='users')
+contacts_routers.register(prefix='organizations', viewset=SuperUserOrganizationViewSet, basename='organizations')
 
 urlpatterns = [
     path('', include(contacts_routers.urls))
