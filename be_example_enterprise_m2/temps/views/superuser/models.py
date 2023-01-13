@@ -24,41 +24,22 @@ class SuperUserPositionViewSet(
     serializers_class = {
         ACTIONS.POST: SuperUserUpdatePositionSerializer
     }
-    permission_classes = [AllowAny]
-    # Or(
-    #     AllowAny,
-    #     IsGlobalAdminPermission,
-    # )
+    permission_classes = [IsGlobalAdminPermission]
 
 
 class SuperUserStatusViewSet(ModelViewSet):
     queryset = Status.objects.all().order_by('id')
     serializer_class = SuperUserStatusSerializer
-    permission_classes = [
-        Or(
-            AllowAny,
-            IsGlobalAdminPermission
-        )
-    ]
+    permission_classes = [IsGlobalAdminPermission]
 
 
 class SuperUserDepartmentViewSet(ModelViewSet):
     queryset = Department.objects.all().order_by('id')
     serializer_class = SuperUserDepartmentSerializer
-    permission_classes = [
-        Or(
-            AllowAny,
-            IsGlobalAdminPermission,
-        )
-    ]
+    permission_classes = [IsGlobalAdminPermission]
 
 
 class SuperUserOperationTypeViewSet(ModelViewSet):
     queryset = OperationType.objects.all().order_by('id')
     serializer_class = SuperUserOperationTypeSerializer
-    permission_classes = [
-        Or(
-            AllowAny,
-            IsGlobalAdminPermission,
-        )
-    ]
+    permission_classes = [IsGlobalAdminPermission]
