@@ -1,2 +1,4 @@
 from .user import SuperUserExtendUserViewSet
+from .selectors import ExtendUserSelectorViewSet, OrganizationSelectorViewSet
 from .organization import SuperUserOrganizationViewSet
+

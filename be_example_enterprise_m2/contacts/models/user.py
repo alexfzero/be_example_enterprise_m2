@@ -2,8 +2,9 @@ from django.db.models import Model
 from django.db.models.fields import CharField, DateField, BooleanField
 from django.db.models.fields.related import ForeignKey, OneToOneField
 from django.db.models.deletion import CASCADE
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
+from django.utils import timezone
 
 from temps.models import Position
 from django.contrib.auth.models import User
@@ -24,8 +25,16 @@ class ExtendUser(Model):
 
     @receiver(post_save, sender=User)
     def create_user(sender, instance, created, **kwargs):
+        default = {
+            'middle_name': 'middle_name',
+            'sex': 'N',
+            'birthday': timezone.now().date(),
+            'number': 'number',
+            'position': Position.objects.all()[0],
+        }
         if created:
-            ExtendUser.objects.create(user=instance)
+            ExtendUser.objects.create(user=instance, **default)
+        instance.extended_user.save()
 
     @receiver(post_save, sender=User)
     def save_user(sender, instance, **kwargs):

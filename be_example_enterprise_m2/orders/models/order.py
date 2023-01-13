@@ -21,4 +21,4 @@ class PurchaseOrder(Model):
     summary = CharField(max_length=255)
 
     def __str__(self):
-        return f"{self.order_number}"
+        return f"{self.order_number} {self.provider}"

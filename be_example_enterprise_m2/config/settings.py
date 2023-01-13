@@ -27,8 +27,12 @@ SECRET_KEY = environ['SECRET']
 DEBUG = True if environ['DEBUG'] == 'True' else False
 
 ALLOWED_HOSTS = [
-    '192.168.0.14',
+    '192.168.0.15',
     '127.0.0.1',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080'
 ]
 
 
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'django_filters',
     'temps',
@@ -52,6 +57,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -87,7 +93,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'HOST': 'localhost',
-        'NAME': 'kurs_equip',
+        'NAME': 'ex_enterprise',
         'USER': 'postgres',
         'PASSWORD': 'alex1873',
     },

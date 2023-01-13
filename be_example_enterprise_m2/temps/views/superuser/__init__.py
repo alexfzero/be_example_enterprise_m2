@@ -4,3 +4,9 @@ from .models import (
     SuperUserStatusViewSet,
     SuperUserOperationTypeViewSet
 )
+from .selectors import (
+    DepartmentSelectorViewSet,
+    PositionSelectorViewSet,
+    StatusSelectorViewSet,
+    OperationTypeSelectorViewSet,
+)

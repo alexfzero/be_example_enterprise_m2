@@ -4,12 +4,12 @@ from django.db.models.fields.related import ForeignKey
 from django.db.models.deletion import CASCADE
 
 from temps.models import Status
-from contacts.models import ExtendUser
+from contacts.models import Organization
 
 
 class Contract(Model):
     number = CharField(max_length=30, unique=True)
-    client = ForeignKey(ExtendUser, related_name='org_contracts', on_delete=CASCADE)
+    client = ForeignKey(Organization, related_name='org_contracts', on_delete=CASCADE)
     Document = CharField(max_length=255)
     status = ForeignKey(Status, related_name='contracts', on_delete=CASCADE)
     formalized = DateTimeField(auto_now_add=True)

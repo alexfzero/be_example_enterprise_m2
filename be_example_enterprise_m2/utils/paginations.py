@@ -41,4 +41,4 @@ class SelectorPagination(PageNumberPagination):
         """
         Функция сбора нового урла, чтобы он ссылался не на текущий инстанс, а на миксер
         """
-        return 'http://localhost/kursach' + request.path
+        return 'http://127.0.0.1/' + request.path
